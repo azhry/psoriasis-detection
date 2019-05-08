@@ -16,7 +16,7 @@
 					</div>
 				</div>
 				<div class="portlet-body">
-					<?= form_open('app') ?>
+					<?= form_open('user') ?>
 						<div class="md-checkbox-list">
 							<?php foreach ($gejala as $row): ?>
 							<div>

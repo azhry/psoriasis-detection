@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 02 Mei 2019 pada 06.01
+-- Generation Time: 08 Mei 2019 pada 08.41
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -120,6 +120,30 @@ INSERT INTO `gejala_penyakit` (`id`, `id_penyakit`, `id_gejala`, `created_at`, `
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `pengguna`
+--
+
+CREATE TABLE `pengguna` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` char(32) NOT NULL,
+  `id_role` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pengguna`
+--
+
+INSERT INTO `pengguna` (`id`, `username`, `password`, `id_role`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 1, 'Usman Firnandes', '2019-05-08 06:29:25', '2019-05-08 06:29:25'),
+(2, 'user', 'e10adc3949ba59abbe56e057f20f883e', 2, 'Usman Firnandes', '2019-05-08 06:29:25', '2019-05-08 06:29:25');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `penyakit`
 --
 
@@ -127,6 +151,7 @@ CREATE TABLE `penyakit` (
   `id` int(11) NOT NULL,
   `kode` char(2) NOT NULL,
   `nama_penyakit` varchar(255) NOT NULL,
+  `saran_penanganan` text,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -135,13 +160,34 @@ CREATE TABLE `penyakit` (
 -- Dumping data untuk tabel `penyakit`
 --
 
-INSERT INTO `penyakit` (`id`, `kode`, `nama_penyakit`, `created_at`, `updated_at`) VALUES
-(2, 'PV', 'Psoriasis Vulgaris', '2019-04-30 09:54:14', '2019-04-30 09:54:14'),
-(3, 'PI', 'Psoriasis Inverse', '2019-04-30 09:54:29', '2019-04-30 09:54:29'),
-(4, 'PA', 'Psoriasis Arthritis', '2019-04-30 09:54:39', '2019-04-30 09:54:39'),
-(5, 'PE', 'Psoriasis Eritoderma', '2019-04-30 09:54:47', '2019-04-30 09:54:47'),
-(6, 'PG', 'Psoriasis Guttate', '2019-04-30 09:54:56', '2019-04-30 09:54:56'),
-(7, 'PP', 'Psoriasis Pultolosa', '2019-04-30 09:55:04', '2019-04-30 09:55:04');
+INSERT INTO `penyakit` (`id`, `kode`, `nama_penyakit`, `saran_penanganan`, `created_at`, `updated_at`) VALUES
+(2, 'PV', 'Psoriasis Vulgaris', 'a.	Jaga emosi.\r\n\r\nb.	Makan makanan yang seimbang.\r\n\r\nc.	Jagalah berat badan.\r\n\r\nd.	Tidak merokok dan mengkonsumsi alkohol.\r\n\r\ne.	Tidak begadang dan luangkan waktu untuk beristirahat.\r\n\r\nf.	Secepatnya konsultasi dengan dokter\r\n\r\ng.	Patuhi cara pemakaian obat dengan benar.\r\n\r\n', '2019-04-30 09:54:14', '2019-05-08 06:19:20'),
+(3, 'PI', 'Psoriasis Inverse', 'a.	Jaga emosi.\r\nb.	Makan makanan yang seimbang.\r\nc.	Jagalah berat badan.\r\nd.	Tidak merokok dan mengkonsumsi alkohol.\r\ne.	Tidak begadang dan luangkan waktu untuk beristirahat.\r\nf.	Secepatnya konsultasi dengan dokter\r\ng.	Patuhi cara pemakaian obat dengan benar.\r\nh.	Kenakan pakaian-pakaina yang menghisap keringat.\r\ni.	Jangan menggaruk serta menggosok kulit terlalu kuat.\r\n', '2019-04-30 09:54:29', '2019-05-08 04:49:15'),
+(4, 'PA', 'Psoriasis Arthritis', 'a.	Jaga emosi.\r\nb.	Makan makanan yang seimbang.\r\nc.	Jagalah berat badan.\r\nd.	Tidak merokok dan mengkonsumsi alkohol.\r\ne.	Tidak begadang dan luangkan waktu untuk beristirahat.\r\nf.	Secepatnya konsultasi dengan dokter\r\ng.	Patuhi cara pemakaian obat dengan benar.\r\n', '2019-04-30 09:54:39', '2019-05-08 04:48:59'),
+(5, 'PE', 'Psoriasis Eritoderma', 'a.	Jaga emosi.\r\nb.	Makan makanan yang seimbang. \r\nc.	Jagalah berat badan.\r\nd.	Tidak merokok dan mengkonsumsi alcohol.\r\ne.	Tidak begadang dan luangkan waktu untuk beristirahat.\r\nf.	Secepatnya konsultasi dengan dokter\r\ng.	Patuhi cara pemakaian obat dengan benar.\r\nh.	Konsumsilah antibiotik.\r\n', '2019-04-30 09:54:47', '2019-05-08 04:49:33'),
+(6, 'PG', 'Psoriasis Guttate', 'a.	Jaga emosi.\r\nb.	Makan makanan yang seimbang.\r\nc.	Jagalah berat badan.\r\nd.	Tidak merokok dan mengkonsumsi alcohol.\r\ne.	Tidak begadang dan luangkan waktu untuk beristirahat.\r\nf.	Secepatnya konsultasi dengan dokter\r\ng.	Patuhi cara pemakaian obat dengan benar.\r\nh.	Lakukan pemeriksaan infeksi strep ke dokter.\r\n', '2019-04-30 09:54:56', '2019-05-08 04:48:46'),
+(7, 'PP', 'Psoriasis Pultolosa', '1.	Jaga emosi.\r\n2.	Makan makanan seimbang..\r\n3.	Jagalah berat badan.\r\n4.	Tidak merokok dan mengkomsumsi alkohol\r\n5.	Tidak begadang dan luangkan waktu untuk beristirahat\r\n6.	Mengurangi penggunaan obat oles tanpa resep dokter.\r\n8.	Gunakanlah pakaian pelindung apabila akan keluar rumah pada siang hari.\r\n9.	Hentikan penggunaan obat steroid.\r\n10.	Secepatnya konsultasi dengan dokter\r\n', '2019-04-30 09:55:04', '2019-05-08 04:49:46');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `role`
+--
+
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `role`
+--
+
+INSERT INTO `role` (`id`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', '2019-05-08 06:28:14', '2019-05-08 06:28:14'),
+(2, 'User', '2019-05-08 06:28:14', '2019-05-08 06:28:14');
 
 --
 -- Indexes for dumped tables
@@ -162,9 +208,22 @@ ALTER TABLE `gejala_penyakit`
   ADD KEY `id_gejala` (`id_gejala`);
 
 --
+-- Indexes for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_role` (`id_role`);
+
+--
 -- Indexes for table `penyakit`
 --
 ALTER TABLE `penyakit`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -184,10 +243,22 @@ ALTER TABLE `gejala_penyakit`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
+-- AUTO_INCREMENT for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `penyakit`
 --
 ALTER TABLE `penyakit`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -199,6 +270,12 @@ ALTER TABLE `penyakit`
 ALTER TABLE `gejala_penyakit`
   ADD CONSTRAINT `gejala_penyakit_ibfk_1` FOREIGN KEY (`id_penyakit`) REFERENCES `penyakit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `gejala_penyakit_ibfk_2` FOREIGN KEY (`id_gejala`) REFERENCES `gejala` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD CONSTRAINT `pengguna_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
