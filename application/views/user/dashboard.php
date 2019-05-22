@@ -1,12 +1,5 @@
 <div class="page-content">
 	<!-- BEGIN PAGE CONTENT INNER -->
-	<div class="row margin-top-10">
-		<div class="col-md-12">
-			<h2>Sistem Pakar Untuk Menentukan Jenis Penyakit Kulit Psoriasis Menggunakan Metode Dempster-Shafer</h2>
-			<h4>Usman Firnandes</h4>
-			<h5>NIM. 09021181320034</h5>
-		</div>
-	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="portlet box green">

@@ -28,9 +28,16 @@
                         <span class="username username-hide-on-mobile">
                         Admin </span>
                         <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                        <img alt="" class="img-circle" src="<?= base_url('assets/metronic') ?>/assets/admin/layout4/img/avatar9.jpg"/>
+                        <i class="fa fa-user"></i>
+                        <!-- <img alt="" class="img-circle" src="<?= base_url('assets/metronic') ?>/assets/admin/layout4/img/avatar9.jpg"/> -->
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
+                            <li>
+                                <a href="<?= base_url('admin/profile') ?>">
+                                    <i class="fa fa-user"></i> Profile
+                                </a> 
+                            </li>
+                            <li class="divider"></li>
                             <li>
                                 <a href="<?= base_url('logout') ?>">
                                 <i class="icon-key"></i> Log Out </a>

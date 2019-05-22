@@ -12,7 +12,7 @@
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                 <li>
-                    <a href="<?= base_url('app') ?>">
+                    <a href="<?= base_url('user') ?>">
                         <i class="fa fa-home"></i>
                         <span class="title">Dashboard</span>
                     </a>
