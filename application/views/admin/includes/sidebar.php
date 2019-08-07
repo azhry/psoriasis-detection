@@ -12,19 +12,19 @@
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                 <li>
-                    <a href="<?= base_url('app') ?>">
+                    <a href="<?= base_url('admin') ?>">
                         <i class="fa fa-home"></i>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('app/gejala') ?>">
+                    <a href="<?= base_url('admin/gejala') ?>">
                         <i class="fa fa-list"></i> 
                         <span class="title">Data Gejala</span>
                     </a>
                 </li>
                 <li>
-                    <a href="<?= base_url('app/penyakit') ?>">
+                    <a href="<?= base_url('admin/penyakit') ?>">
                         <i class="fa fa-list"></i> 
                         <span class="title">Data Penyakit</span>
                     </a>

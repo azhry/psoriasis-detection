@@ -62,4 +62,48 @@ class User extends MY_Controller
 		$this->data['content']	= 'dashboard';
 		$this->template($this->data, $this->module);
 	}
+
+	public function profile()
+	{
+		$this->load->model('Pengguna_m');
+		$this->data['pengguna'] = Pengguna_m::find($this->session->userdata('id_pengguna'));
+		if ($this->POST('submit'))
+		{
+			$logout = false;
+			if ($this->data['pengguna']->username != $this->POST('username'))
+			{
+				$logout = true;
+			}
+
+			$this->data['pengguna']->nama = $this->POST('nama');
+			$this->data['pengguna']->username = $this->POST('username');
+
+			$password 	= $this->POST('password');
+			$rpassword 	= $this->POST('rpassword');
+			if (isset($password, $rpassword) && !empty($password) && !empty($rpassword)) 
+			{
+				if ($password !== $rpassword)
+				{
+					$this->flashmsg('Kolom password harus sama dengan kolom Re-type Password', 'danger');
+					redirect('user/profile');
+				}
+
+				$this->data['pengguna']->password = md5($password);
+				$logout = true;
+			}
+
+			$this->data['pengguna']->save();
+			if ($logout)
+			{
+				redirect('logout?a=profile');
+			}
+
+			$this->flashmsg('Profile berhasil diubah');
+			redirect('user/profile');
+		}
+
+		$this->data['title']	= 'Profile';
+		$this->data['content']	= 'profile';
+		$this->template($this->data, $this->module);
+	}
 }

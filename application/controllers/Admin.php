@@ -1,5 +1,13 @@
 <?php 
 
+/**
+* folder controllers, models, views, libraries
+*
+* controllers: kode program yg mengatur alur program
+* models: kode program yang digunakan untuk menghandle data pada database
+* views: kode program yang digunakan untuk layouting tampilan
+**/
+
 class Admin extends MY_Controller
 {
 	public function __construct()
@@ -17,11 +25,13 @@ class Admin extends MY_Controller
 		}
 	}
 
+	// kode program yg dijalankan ketika membuka link localhost/psoriasis-detection/admin/index
 	public function index()
 	{
 		$this->load->model('Gejala_m');
 		$this->data['gejala']	= Gejala_m::get();
 
+		// jika tombol proses diklik, maka jalankan kode program di dalam if ini
 		if ($this->POST('process'))
 		{
 			$this->load->model('Penyakit_m');
@@ -36,13 +46,13 @@ class Admin extends MY_Controller
 				$row = Gejala_m::with(['gejala_penyakit', 'gejala_penyakit.penyakit'])->find($id);
 				if (isset($row))
 				{
-					$gejala []= $row;
+					$gejala []= $row; // gejala yg dipilih
 				}
 			}
 
-			$this->load->library('dss/DempsterShafer');
+			$this->load->library('dss/DempsterShafer'); // di folder libraries/dss
 			$this->data['result'] 			= $this->dempstershafer->predict($gejala);
-			$this->data['gejala_terpilih'] 	= $gejala;
+			$this->data['gejala_terpilih'] 	= $gejala; // gejala yg kita pilih disimpan disini
 
 			$this->data['penyakit'] = [];
 			if (count($this->data['result']) > 0)
@@ -59,8 +69,13 @@ class Admin extends MY_Controller
 		}
 
 		$this->data['title']	= 'Dashboard';
-		$this->data['content']	= 'dashboard';
+		$this->data['content']	= 'dashboard'; // lihat di views/admin/dashboard.php
 		$this->template($this->data, $this->module);
+	}
+
+	public function yyy()
+	{
+		echo 'test';
 	}
 
 	public function gejala()
@@ -116,6 +131,50 @@ class Admin extends MY_Controller
 		$this->data['penyakit']	= Penyakit_m::get();
 		$this->data['title']	= 'Menu Penyakit';
 		$this->data['content']	= 'menu_penyakit';
+		$this->template($this->data, $this->module);
+	}
+
+	public function profile()
+	{
+		$this->load->model('Pengguna_m');
+		$this->data['pengguna'] = Pengguna_m::find($this->session->userdata('id_pengguna'));
+		if ($this->POST('submit'))
+		{
+			$logout = false;
+			if ($this->data['pengguna']->username != $this->POST('username'))
+			{
+				$logout = true;
+			}
+
+			$this->data['pengguna']->nama = $this->POST('nama');
+			$this->data['pengguna']->username = $this->POST('username');
+
+			$password 	= $this->POST('password');
+			$rpassword 	= $this->POST('rpassword');
+			if (isset($password, $rpassword) && !empty($password) && !empty($rpassword)) 
+			{
+				if ($password !== $rpassword)
+				{
+					$this->flashmsg('Kolom password harus sama dengan kolom Re-type Password', 'danger');
+					redirect('admin/profile');
+				}
+
+				$this->data['pengguna']->password = md5($password);
+				$logout = true;
+			}
+
+			$this->data['pengguna']->save();
+			if ($logout)
+			{
+				redirect('logout?a=profile');
+			}
+
+			$this->flashmsg('Profile berhasil diubah');
+			redirect('admin/profile');
+		}
+
+		$this->data['title']	= 'Profile';
+		$this->data['content']	= 'profile';
 		$this->template($this->data, $this->module);
 	}
 }

@@ -24,6 +24,12 @@ class Login extends MY_Controller
 			}
 
 		}
+
+		$action = $this->input->get('a');
+		if (isset($action) && $action == 'profile')
+		{
+			$this->flashmsg('Profile anda berhasil diubah. Silahkan login kembali');
+		}
   	}
 
 
