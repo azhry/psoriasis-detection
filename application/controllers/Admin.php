@@ -8,6 +8,17 @@
 * views: kode program yang digunakan untuk layouting tampilan
 **/
 
+// buka di git bash
+// jika ada kodingan yg diubah, langkah mengupdatenya ke github
+// git status
+// git add .
+// git commit -m "pesan commit nya apa"
+// git push origin master
+
+
+// jika ada yg update 
+// git pull origin master
+
 class Admin extends MY_Controller
 {
 	public function __construct()
