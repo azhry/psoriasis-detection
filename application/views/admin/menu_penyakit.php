@@ -16,7 +16,7 @@
 								<th>No.</th>
 								<th>Kode</th>
 								<th>Nama Penyakit</th>
-								<!-- <th>Action</th> -->
+								<th>-</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -25,16 +25,13 @@
 									<td><?= $i + 1 ?></td>
 									<td><?= $row->kode ?></td>
 									<td><?= $row->nama_penyakit ?></td>
-									<!-- <td>
+									<td>
 										<div class="btn-group">
-											<a class="btn blue" href="#button">
-												<i class="fa fa-edit"></i> Edit
-											</a>
-											<a class="btn red" href="#button">
-												<i class="fa fa-trash"></i> Delete
+											<a class="btn blue btn-xs" href="<?= base_url('admin/tambah-gejala-penyakit/' . $row->id) ?>">
+												<i class="fa fa-edit"></i> Tambah Gejala
 											</a>
 										</div>
-									</td> -->
+									</td>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>

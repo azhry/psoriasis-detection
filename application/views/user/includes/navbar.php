@@ -5,7 +5,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="<?= base_url('pemilik') ?>">
-                <img src="<?= base_url('assets/metronic') ?>/assets/admin/layout4/img/logo-light.png" alt="logo" class="logo-default"/>
+                <!-- <img src="<?= base_url('assets/metronic') ?>/assets/admin/layout4/img/logo-light.png" alt="logo" class="logo-default"/> -->
             </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -32,15 +32,15 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
-                                <a href="<?= base_url('user/profile') ?>">
-                                    <i class="fa fa-user"></i> Profile
+                                <a href="<?= base_url('login') ?>">
+                                    <i class="icon-key"></i> Login
                                 </a> 
                             </li>
-                            <li class="divider"></li>
+                            <!-- <li class="divider"></li>
                             <li>
                                 <a href="<?= base_url('logout') ?>">
                                 <i class="icon-key"></i> Log Out </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->

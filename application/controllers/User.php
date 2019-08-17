@@ -7,14 +7,14 @@ class User extends MY_Controller
 		parent::__construct();
 		$this->module = 'user';
 
-		$id_pengguna	= $this->session->userdata('id_pengguna');
-	    $username 		= $this->session->userdata('username');
-	    $id_role		= $this->session->userdata('id_role');
-		if (!isset($id_pengguna, $username, $id_role) or $id_role != 2)
-		{
-			$this->session->sess_destroy();
-			redirect('login');
-		}
+		// $id_pengguna	= $this->session->userdata('id_pengguna');
+	 //    $username 		= $this->session->userdata('username');
+	 //    $id_role		= $this->session->userdata('id_role');
+		// if (!isset($id_pengguna, $username, $id_role) or $id_role != 2)
+		// {
+		// 	$this->session->sess_destroy();
+		// 	redirect('login');
+		// }
 	}
 
 	public function index()
@@ -106,4 +106,6 @@ class User extends MY_Controller
 		$this->data['content']	= 'profile';
 		$this->template($this->data, $this->module);
 	}
+
+	
 }

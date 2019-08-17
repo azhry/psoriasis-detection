@@ -19,7 +19,10 @@
 							<label for="kode">Kode</label>
 							<input type="text" name="kode" maxlength="2" class="form-control">
 						</div>
-
+						<div class="form-group">
+							<label for="saran_penanganan">Saran Penanganan</label>
+							<textarea class="form-control" name="saran_penanganan"></textarea>
+						</div>
 						<input type="submit" value="Submit" name="submit" class="btn btn-primary">
 					<?= form_close() ?>
 				</div>
