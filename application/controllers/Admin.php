@@ -136,6 +136,55 @@ class Admin extends MY_Controller
 		$this->template($this->data, $this->module);
 	}
 
+	public function edit_gejala()
+	{
+		$this->data['id'] = $this->uri->segment(3);
+		$this->check_allowance(!isset($this->data['id']));
+
+		$this->load->model('Gejala_m');
+		$this->data['gejala'] = Gejala_m::find($this->data['id']);
+		$this->check_allowance(!isset($this->data['gejala']), ['Data not found', 'danger']);
+
+		$this->load->model('Penyakit_m');
+		$this->data['penyakit']	= Penyakit_m::get();
+
+		$this->load->model('GejalaPenyakit_m');
+		$gejalaPenyakitLama = GejalaPenyakit_m::where('id_gejala', $this->data['id'])->get();
+		$this->data['id_penyakit'] = array_column($gejalaPenyakitLama->toArray(), 'id_penyakit');
+
+		if ($this->POST('submit'))
+		{
+			$gejala = Gejala_m::find($this->data['id']);
+			$gejala->kode			= $this->POST('kode');
+			$gejala->nama_gejala 	= $this->POST('nama_gejala');
+			$gejala->belief 		= $this->POST('belief');
+			$gejala->save();
+
+			$idGejala = $gejala->id;
+			$gejalaPenyakit = [];
+			foreach ($this->data['penyakit'] as $penyakit)
+			{
+				if (isset($_POST[$penyakit->kode]))
+				{
+					$gejalaPenyakit []= [
+						'id_gejala'		=> $idGejala,
+						'id_penyakit'	=> $penyakit->id
+					];
+				}
+			}
+
+			GejalaPenyakit_m::where('id_gejala', $this->data['id'])->delete();
+			GejalaPenyakit_m::insert($gejalaPenyakit);
+
+			$this->flashmsg('Gejala baru berhasil ditambahkan');
+			redirect('admin/gejala');
+		}
+
+		$this->data['title']	= 'Edit Gejala';
+		$this->data['content']	= 'edit_gejala';
+		$this->template($this->data, $this->module);
+	}
+
 	public function penyakit()
 	{
 		$this->load->model('Penyakit_m');
