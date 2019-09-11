@@ -54,7 +54,7 @@
 							<?php endforeach; ?>
 						</tbody>
 					</table>
-					<p>Dari perhitungan <strong><?= count($gejala_terpilih) ?></strong> gejala tersebut didapat hasil penyakit <strong><?= $result[0]['index'] ?> (<?= implode(',', array_column($penyakit, 'nama_penyakit')) ?>)</strong> dengan nilai probabilitas <strong><?= $result[0]['nilai'] ?></strong> atau <strong><?= round($result[0]['nilai'] * 100, 2) ?> %</strong></p>
+					<p>Dari perhitungan <strong><?= count($gejala_terpilih) ?></strong> gejala tersebut didapat hasil penyakit <strong><?= $result[0]['index'] ?> (<?= implode(',', array_column($penyakit2, 'nama_penyakit')) ?>)</strong> dengan nilai probabilitas <strong><?= $result[0]['nilai'] ?></strong> atau <strong><?= round($result[0]['nilai'] * 100, 2) ?> %</strong></p>
 					<table class="table table-bordered table-hover table-striped">
 						<thead>
 							<tr>
