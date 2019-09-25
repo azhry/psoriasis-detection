@@ -51,6 +51,7 @@ class User extends MY_Controller
 			$this->data['gejala_terpilih'] 	= $gejala;
 
 			$this->data['penyakit'] = [];
+			$this->data['penyakit2'] = [];
 			if (count($this->data['result']) > 0)
 			{
 				foreach ($this->data['result'][0]['kode'] as $kode)
@@ -59,9 +60,11 @@ class User extends MY_Controller
 					if (isset($penyakit))
 					{
 						$this->data['penyakit'] []= $penyakit;
+						$this->data['penyakit2'] []= $penyakit->toArray();
 					}
 				}
 			}
+
 		}
 
 		$this->data['title']	= 'Dashboard';
