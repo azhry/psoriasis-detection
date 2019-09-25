@@ -17,6 +17,11 @@
         </a>
         <!-- END RESPONSIVE MENU TOGGLER -->
         <!-- BEGIN PAGE TOP -->
+        <ul class="nav navbar-nav text-center">
+            <li style="margin-left: 140px;">
+                <h3>Sistem Pakar Untuk Menentukan Jenis Penyakit Kulit Psoriasis <br>Menggunakan Metode Dempster-Shafer</h3>
+            </li>
+        </ul>
         <div class="page-top">
             <!-- BEGIN TOP NAVIGATION MENU -->
             <div class="top-menu">

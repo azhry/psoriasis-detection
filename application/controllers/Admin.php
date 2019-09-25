@@ -49,6 +49,12 @@ class Admin extends MY_Controller
 			$gejala = [];
 
 			unset($_POST['process']);
+			if (count(array_keys($_POST)) <= 0)
+			{
+				$this->flashmsg('Anda harus memilih gejala terlebih dahulu', 'danger');
+				redirect('admin');
+			}
+
 			foreach ($_POST as $key => $value)
 			{
 				$token = explode('_', $key);

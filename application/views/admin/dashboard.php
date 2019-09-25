@@ -2,6 +2,7 @@
 	<!-- BEGIN PAGE CONTENT INNER -->
 	<div class="row">
 		<div class="col-md-12">
+			<?= $this->session->flashdata('msg') ?>
 			<div class="portlet box green">
 				<div class="portlet-title">
 					<div class="caption">
